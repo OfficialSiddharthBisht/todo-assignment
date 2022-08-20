@@ -1,9 +1,12 @@
 import './App.css';
+import {Navbar} from './components/Navbar';
+import  { Pages} from './pages/Pages';
 
 function App() {
   return (
     <div className="App">
-      <h1>Todo Application</h1>
+      <Navbar />
+      <Pages />
     </div>
   );
 }
