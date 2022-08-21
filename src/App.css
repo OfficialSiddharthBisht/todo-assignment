@@ -50,3 +50,7 @@
 .radio_basic{
   margin-bottom: 50px;
 }
+.home_container{
+  display: flex;
+  justify-content: space-around;
+}

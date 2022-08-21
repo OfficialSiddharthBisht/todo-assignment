@@ -9,7 +9,7 @@ const initialState = {
 
 export const Login = () =>{
     const [loginData, setLoginData] = React.useState(initialState);
-    const token = useSelector(state => state.token);
+    const token = useSelector(state => state.auth.token);
     const dispatch = useDispatch();
 
     const handleChange = (e) =>{

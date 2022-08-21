@@ -4,7 +4,7 @@ import { logout } from '../store/auth/actions';
 import { getTasks } from '../store/task/action';
 import { DetailsOfUser } from './DetailsOfUser';
 export const Home =()=> {
-  const token = useSelector(state => state.token);
+  const token = useSelector(state => state.auth.token);
   const dispatch = useDispatch();
 
   useEffect(()=>{
