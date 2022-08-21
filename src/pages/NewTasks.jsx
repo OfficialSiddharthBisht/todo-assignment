@@ -46,7 +46,7 @@ export const NewTask = () => {
                 }
             }
         }
-        const task_status = "";
+        let task_status = "";
         for( const key in radioState){
             if(Object.hasOwnProperty.call(radioState, key)){
                 const element = radioState[key];
