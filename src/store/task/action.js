@@ -1,4 +1,5 @@
-import { ADD_TASK_ERR, ADD_TASK_LOADING, ADD_TASK_SUCCESS, DELETE_TASK_ERR, DELETE_TASK_LOADING, DELETE_TASK_SUCCESS, GET_TASK_ERR, GET_TASK_LOADING, GET_TASK_SUCCESS, PATCH_TASK_ERR, PATCH_TASK_LOADING, PATCH_TASK_SUCCESS } from "./actionType"
+import axios from "axios"
+import { ADD_TASK_ERR, ADD_TASK_LOADING, ADD_TASK_SUCCESS, DELETE_TASK_ERR, DELETE_TASK_LOADING, DELETE_TASK_SUCCESS, GET_TASK_ERR, GET_TASK_LOADING, GET_TASK_SUCCESS, PATCH_TASK_ERR, PATCH_TASK_LOADING, PATCH_TASK_SUCCESS } from "./actionTypes"
 
 export const getTaskLoading = () =>{
     return{
@@ -68,4 +69,29 @@ export const deleteTaskError = ()=>{
     return{
         type : DELETE_TASK_ERR
     }
+}
+export const getTasks = (obj)=> (dispatch) =>{
+    dispatch(getTaskLoading());
+    axios({
+        method : "post",
+        url :"http://localhost:7000/data",
+    }).then(res =>{
+        dispatch(getTaskSuccess(res.data));
+    }).catch(err =>{
+        dispatch(getTaskError());
+    })
+}
+
+export const addTasks = (obj)=> (dispatch) =>{
+    dispatch(addTaskLoading());
+    axios({
+        method : "post",
+        url :"http://localhost:7000/data",
+        data : obj
+    }).then(res =>{
+        dispatch(addTaskSuccess());
+        dispatch(getTasks());
+    }).catch(err =>{
+        dispatch(addTaskError());
+    })
 }

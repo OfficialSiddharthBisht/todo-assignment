@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { SubTaskAdder } from '../components/SubTaskAdder';
-import { addTaskLoading } from '../store/task/action';
+import { addTaskError, addTaskLoading, addTasks, addTaskSuccess } from '../store/task/action';
+import axios from 'axios';
 
 export const NewTask = () => {
     const [subTask, setSubTask] = React.useState([]);
@@ -62,11 +63,7 @@ export const NewTask = () => {
             task_status,
             subTask,
         }
-        dispatch(addTaskLoading());
-        axios({
-            method : "post",
-            url :""
-        })
+       dispatch(addTasks(obj));
     }
     return (
         <div style={{display:'flex' , justifyContent:'space-around', marginBottom:'20px'}}>
