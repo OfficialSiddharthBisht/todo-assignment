@@ -1,5 +1,5 @@
-[
-    {
+{
+    "data" :{
         "title" : "hey",
         "description" : "This is a sample description",
         "tags" : [
@@ -16,4 +16,4 @@
             }
         ]
     }
-]
+}
