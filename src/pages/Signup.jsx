@@ -1,5 +1,7 @@
 import axios from "axios";
 import React from "react";
+import { useDispatch } from "react-redux";
+import {signupLoading, signupSuccess , signupError } from '../store/auth/actions'
 
 const initialState = {
     name : "",
@@ -12,7 +14,7 @@ const initialState = {
 
 export const Signup = () =>{
     const [signupData, setSignupData] = React.useState(initialState);
-    
+    const dispatch = useDispatch();
 
     const handleChange = (e) =>{
         const {name , value} = e.target;
@@ -31,14 +33,16 @@ export const Signup = () =>{
             alert("Fill all the details please");
             return;
         }
+        dispatch(signupLoading());
         axios({
             method : "post",
             url : "https://masai-api-mocker.herokuapp.com/auth/register",
             data : signupData
         }).then(res =>{
-
+            dispatch(signupSuccess);
+            setSignupData(initialState);
         }).catch(err =>{
-            
+            dispatch(signupError);
         })
     }
     return(
