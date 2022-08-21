@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch ,useSelector } from 'react-redux'
 import { logout } from '../store/auth/actions';
+import { DetailsOfUser } from './DetailsOfUser';
 
 export const Home =()=> {
   const token = useSelector(state => state.token);
@@ -8,6 +9,9 @@ export const Home =()=> {
   return (
     <div>
       <h1>Home</h1>
+      {
+        <DetailsOfUser />
+      }
       {!!token ? <button onClick={()=>dispatch(logout())}>Logout</button>: null}
     </div>
   )
