@@ -12,6 +12,7 @@ const initialState = {
 
 export const Signup = () =>{
     const [signupData, setSignupData] = React.useState(initialState);
+    
 
     const handleChange = (e) =>{
         const {name , value} = e.target;
@@ -32,7 +33,7 @@ export const Signup = () =>{
         }
         axios({
             method : "post",
-            url : "https://masai-api-mocker.herokuapp.com//auth/register",
+            url : "https://masai-api-mocker.herokuapp.com/auth/register",
             data : signupData
         }).then(res =>{
 
