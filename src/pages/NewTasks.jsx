@@ -1,8 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 import { SubTaskAdder } from '../components/SubTaskAdder';
-import { addTaskError, addTaskLoading, addTasks, addTaskSuccess } from '../store/task/action';
-import axios from 'axios';
+import { addTasks } from '../store/task/action';
 
 export const NewTask = () => {
     const [subTask, setSubTask] = React.useState([]);

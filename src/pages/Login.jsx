@@ -1,7 +1,6 @@
-import axios from "axios";
 import React from "react";
 import { useDispatch , useSelector } from "react-redux";
-import { loginLoading, loginSuccess , loginError ,loginReq} from "../store/auth/actions";
+import {loginReq} from "../store/auth/actions";
 import {Navigate} from 'react-router-dom'
 const initialState = {
     username : "",
