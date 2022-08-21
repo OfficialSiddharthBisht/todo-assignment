@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+.subttaskItem{
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+.input_basic{
+  margin-bottom: 20px;
+}
+.txtarea_basic{
+  margin-bottom: 20px;
+}
+.radio_basic{
+  margin-bottom: 50px;
+}
