@@ -49,7 +49,6 @@ export const reducer = (state = initialState, { type, payload }) => {
         case LOGOUT:
             return {
                 ...initialState,
-
             }
         case FEED_USERDETAILS:
             return {

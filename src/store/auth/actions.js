@@ -57,6 +57,19 @@ export const signupReq = (signupData) =>(dispatch) =>{
     })
 }
 
+export const loginReq = (loginData)=>(dispatch)=>{
+    dispatch(loginLoading());
+    axios({
+        method : "post",
+        url : "https://masai-api-mocker.herokuapp.com/auth/login",
+        data : loginData
+    }).then(res =>{
+        dispatch(loginSuccess(res.data.token));
+    }).catch(err =>{
+        dispatch(loginError());
+    })
+}
+
 // -----------------------
 export const logout = () =>{
     return{
