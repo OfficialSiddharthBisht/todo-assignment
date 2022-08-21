@@ -1,5 +1,7 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
 import { SubTaskAdder } from '../components/SubTaskAdder';
+import { addTaskLoading } from '../store/task/action';
 
 export const NewTask = () => {
     const [subTask, setSubTask] = React.useState([]);
@@ -15,7 +17,7 @@ export const NewTask = () => {
         inprogress : false,
         done : false,
     })
-
+    const dispatch = useDispatch();
     const handleCheckChange = (e) =>{
         const {checked , name} = e.target;
         setCheckedState(prev => ({
@@ -60,6 +62,11 @@ export const NewTask = () => {
             task_status,
             subTask,
         }
+        dispatch(addTaskLoading());
+        axios({
+            method : "post",
+            url :""
+        })
     }
     return (
         <div style={{display:'flex' , justifyContent:'space-around', marginBottom:'20px'}}>
