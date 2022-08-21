@@ -1,7 +1,8 @@
 import axios from "axios";
 import React from "react";
 import { useDispatch ,useSelector } from "react-redux";
-import {signupLoading, signupSuccess , signupError } from '../store/auth/actions'
+import {signupLoading, signupSuccess , signupError ,signupReq } from '../store/auth/actions'
+import { Navigate } from "react-router-dom";
 
 const initialState = {
     name : "",
@@ -23,6 +24,8 @@ export const Signup = () =>{
             {...prev , [name] : value}
         ))
     }
+
+
     const handleSignup = () =>{
         let isValid = true;
         Object.values(signupData).forEach(el => {
@@ -34,17 +37,11 @@ export const Signup = () =>{
             alert("Fill all the details please");
             return;
         }
-        dispatch(signupLoading());
-        axios({
-            method : "post",
-            url : "https://masai-api-mocker.herokuapp.com/auth/register",
-            data : signupData
-        }).then(res =>{
-            dispatch(signupSuccess());
-            setSignupData(initialState);
-        }).catch(err =>{
-            dispatch(signupError());
-        })
+       dispatch(signupReq(signupData));
+       setSignupData(initialState);
+    }
+    if(token){
+        return <Navigate to = "/" />
     }
     return(
         <>
